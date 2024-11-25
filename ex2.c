@@ -176,6 +176,21 @@ int main() {
     	printf("\n");
     	break;
     case 6:
+    	int smileNumber, cheerNumber;
+    	int verification;
+    	printf("Enter a smile and cheer number:\n");
+    	while (1)
+    	{
+    		verification = scanf("smile:%d, cheer:%d", &smileNumber, &cheerNumber);
+		    if (verification != 2 || smileNumber < 1 || cheerNumber < 1 || smileNumber == cheerNumber)
+		    {
+			    printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
+			    scanf("%*[\n]");
+			    scanf("%*c");
+		    }
+    		else
+    			break;
+    	}
 
 
 
