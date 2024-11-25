@@ -177,35 +177,79 @@ int main() {
     	break;
     case 6:
     	int smileNumber, cheerNumber;
-    	int verification;
+    	int verification = 0;
+    	char smile[7] = {'s','m','i','l','e',':','\0'};
+    	char cheer[9] = {',',' ','c','h','e','e','r',':','\0'};
+    	char var;
     	printf("Enter a smile and cheer number:\n");
+
     	while (1)
     	{
-    		verification = scanf("smile:%d, cheer:%d", &smileNumber, &cheerNumber);
-		    if (verification != 2 || smileNumber < 1 || cheerNumber < 1 || smileNumber == cheerNumber)
-		    {
+    		if (verification)
+    		{
+			    scanf("%*[^\n]%*c");
 			    printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
-			    scanf("%*[\n]");
-			    scanf("%*c");
-		    }
-    		else
-    			break;
+			    verification = 0;
+    		}
+    		for (int i = 0; i < 6; i++)
+    		{
+    			scanf("%c",&var);
+    			if (var != smile[i])
+    			{
+    				verification = 1;
+    				break;
+    			}
+    		}
+    		if (verification)
+    			continue;
+			if (scanf(" %d", &smileNumber) != 1)
+			{
+				verification = 1;
+				continue;
+			}
+    		for (int i = 0; i < 8; i++)
+    		{
+    			scanf("%c",&var);
+    			if (var != cheer[i])
+    			{
+    				verification = 1;
+    				break;
+    			}
+    		}
+    		if (verification)
+    			continue;
+    		if (scanf(" %d", &cheerNumber) != 1)
+    		{
+				verification = 1;
+    			continue;
+    		}
+    		if (smileNumber < 1 || cheerNumber < 1 || cheerNumber == smileNumber)
+    		{
+    			verification = 1;
+    			continue;
+    		}
+    		break;
     	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    	printf("Enter maximum number for the festival: ");
+    	scanf("%d", &num);
+    	for (int i = 1; i <= num; i++)
+    	{
+    		if ((i % smileNumber == 0) && (i % cheerNumber == 0))
+    		{
+    			printf("Festival!\n");
+    			continue;
+    		}
+    		if (i % smileNumber == 0)
+    		{
+    			printf("Smile!\n");
+    			continue;
+    		}
+    		if (i % cheerNumber == 0)
+    			printf("Cheer!\n");
+    		else
+    			printf("%d\n",i);
+    	}
+    	break;
     case 7:
     	break;
 	}
