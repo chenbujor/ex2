@@ -185,9 +185,9 @@ int main() {
 
     	while (1)
     	{
+    		scanf("%*[^\n]%*c");
     		if (verification)
     		{
-			    scanf("%*[^\n]%*c");
 			    printf("Only 2 different positive numbers in the given format are allowed for the festival, please try again:\n");
 			    verification = 0;
     		}
